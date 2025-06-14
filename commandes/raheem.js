@@ -60,7 +60,7 @@ zokou({
     await sock.sendMessage(chatId, {
       video: { url: "https://files.catbox.moe/hsubai.mp4" },
       caption: fullMenu,
-      gifPlayback: true,
+      videoPlayback: true,
       contextInfo: {
         forwardingScore: 999,
         isForwarded: true,
