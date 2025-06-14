@@ -37,11 +37,11 @@ const date = moment().format('DD/MM/YYYY');
 Hello ${nomAuteurMessage},,
 *DEPLOYMENT STEPS* 
 ╭───────────────────☆
-★When you want to deploy any whatsapp bot check on its repo and check on its deployment procedure and make sure you have the deployment site e.g;  heroku.com , render.com , Koyeb.com and many more:
+★When you want to deploy any whatsapp bot check on its repo and check on its deployment procedure and make sure you have the deployment site e.g;  https://dashboard.heroku.com/new?template=https://github.com/Raheem-cm/RAHEEM_XMD-/tree/main?tab=readme-ov-file , render.com , Koyeb.com and many more:
 ✔First type the sc ,repo or script command and you will get Raheem xmd repository 
 ✔From there you are required to get your *Session id* but how,??..
          𝐇𝐎𝐖 𝐓𝐎 𝐆𝐄𝐓 𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𝐈𝐃
-✞ Open this link 👉 https://Raheem-cm.onrender.com   then tap on pair code.
+✞ Open this link 👉 https://lezkush.onrender.com   then tap on pair code.
 ✞ Enter your whatsapp number with the country code e.g;  255763111390 then tap submit 
 ✞Raheem-xmd owner , *Raheem* ,will send you the code immediately.Copy the code and whatsapp will bring a notification 
 ✞Tap on the notification and paste the code that Raheem-xmd owner sent you.
