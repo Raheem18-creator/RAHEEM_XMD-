@@ -1,6 +1,6 @@
     if (response) {
         await sock.sendMessage(chatId, {
-            text: `🧠 *RAHEEM-XMD Bot Replied:*\n\n${response}\n\n💡 _AI Powered by ArslanMD Official_`
+            text: `🧠 *RAHEEM-XMD Bot Replied:*\n\n${response}\n\n💡 _AI Powered by raheem Official_`
         }, { quoted: message });
     } else {
         await sock.sendMessage(chatId, {
