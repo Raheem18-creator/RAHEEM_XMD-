@@ -58,7 +58,7 @@ zokou({
   try {
     // Send video menu with caption
     await sock.sendMessage(chatId, {
-      video: { url: "https://files.catbox.moe/hsubai.mp4" },
+      gif: { url: "https://files.catbox.moe/hsubai.mp4" },
       caption: fullMenu,
       videoPlayback: true,
       contextInfo: {
