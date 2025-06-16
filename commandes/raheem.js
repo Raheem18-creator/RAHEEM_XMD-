@@ -87,7 +87,9 @@ zokou({
           body: "Your smart WhatsApp assistant",
           sourceUrl: "https://whatsapp.com/channel/0029VbAffhD2ZjChG9DX922r",
           mediaType: 1
+             //join https://chat.whatsapp.com/Jp08rEdDmao1CvCOLH2KTT
         }
+  
       }
     }, { quoted: ms });
 
