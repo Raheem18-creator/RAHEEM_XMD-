@@ -1,23 +1,27 @@
-const { zokou } = require("../../framework/zokou");
-const conf = require("../../set");
-const axios = require("axios");
+    if (response) {
+        await sock.sendMessage(chatId, {
+            text: `🧠 *RAHEEM-XMD Bot Replied:*\n\n${response}\n\n💡 _AI Powered by ArslanMD Official_`
+        }, { quoted: message });
+    } else {
+        await sock.sendMessage(chatId, {
+            text: '⚠️ I tried, but couldn’t understand that. Try rephrasing your message.',
+            quoted: message
+        });
+    }
+}
 
-zokou({ nomCom: "chatbot", categorie: "General", reaction: "🤖" }, async (dest, zk, commandeOptions) => {
-  const { ms, repondre, auteurMessage } = commandeOptions;
-  const sender = auteurMessage;
-  const isCreator = [conf.NUMERO_OWNER + '@s.whatsapp.net'].includes(sender);
-  const args = ms.body.split(" ").slice(1);
-  const option = args[0]?.toLowerCase();
+async function getAIResponse(userMessage, context) {
+    try {
+        const prompt = `User: ${userMessage}\n\nChat history:\n${context.messages.join('\n')}`;
+        const res = await fetch("https://api.dreaded.site/api/chatgpt?text=" + encodeURIComponent(prompt));
+        const json = await res.json();
+        return json.result?.prompt || null;
+    } catch (e) {
+        return null;
+    }
+}
 
-  if (!isCreator) return repondre("*Only owner can use this command.*");
-
-  if (option === "on") {
-    conf.CHATBOT = true;
-    repondre("✅ Chatbot has been *enabled*.");
-  } else if (option === "off") {
-    conf.CHATBOT = false;
-    repondre("❌ Chatbot has been *disabled*.");
-  } else {
-    repondre("⚙️ Usage:\n- `chatbot on` to enable\n- `chatbot off` to disable");
-  }
-});
+module.exports = {
+    handleChatbotCommand,
+    handleChatbotResponse
+};
