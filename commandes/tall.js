@@ -4,7 +4,7 @@ const {
 const traduire = require("../framework/traduction");
 const axios = require("axios");
 zokou({
-  'nomCom': "bot",
+  'nomCom': "raheem",
   'reaction': '📡',
   'categorie': 'IA'
 }, async (_0x4cc0a5, _0x326233, _0x3f0bda) => {
