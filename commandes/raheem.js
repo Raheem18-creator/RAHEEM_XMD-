@@ -12,17 +12,17 @@ zokou({
   let { ms, repondre, prefixe, nomAuteurMessage } = data;
   let { cm } = require(__dirname + "/../framework/zokou");
 
-  // Determine bot mode
+  // Bot mode
   let mode = s.MODE.toLowerCase() === "yes" ? "Public" : "Private";
 
-  // Group commands by category
+  // Group commands
   let grouped = {};
   for (const command of cm) {
     if (!grouped[command.categorie]) grouped[command.categorie] = [];
     grouped[command.categorie].push(command.nomCom);
   }
 
-  // Set timezone and get date/time
+  // Timezone and Date
   moment.tz.setDefault("Africa/Dar_es_Salaam");
   const time = moment().format("HH:mm:ss");
   const date = moment().format("DD/MM/YYYY");
@@ -34,6 +34,7 @@ zokou({
 │⏰ *Time:* ${time}
 │📟 *Mode:* ${mode}
 │🔢 *Total Commands:* ${cm.length}
+│💻 *Platform:* Linux
 ╰───────────────⬣\n\n`;
 
   // Build command list
@@ -46,17 +47,30 @@ zokou({
     commandText += `└─────────────⬣\n\n`;
   }
 
-  // Final full menu text
   const fullMenu = header + readmore + commandText + "> 🤖 *RAHEEM XMD – Smart Assistant Ready to Help You!*";
 
-  // Extract chat ID safely
   const chatId = ms?.key?.remoteJid;
-  if (!chatId) {
-    return repondre("❌ Failed to load menu: Unable to get chat ID.");
-  }
+  if (!chatId) return repondre("❌ Failed to load menu: Unable to get chat ID.");
 
   try {
-    // Send video menu with caption
+    // 1. Send image (intro)
+    await sock.sendMessage(chatId, {
+      image: { url: "https://files.catbox.moe/l2l2yd.jpg" },
+      caption: `*🤖 RAHEEM XMD - Smart WhatsApp Bot Assistant*\n\nWelcome! Use the menu below to explore commands.`,
+      contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        externalAdReply: {
+          title: "RAHEEM XMD",
+          body: "Your Smart WhatsApp Assistant",
+          sourceUrl: "https://whatsapp.com/channel/0029VbAffhD2ZjChG9DX922r",
+          mediaType: 2,
+          renderLargerThumbnail: true
+        }
+      }
+    }, { quoted: ms });
+
+    // 2. Send video (menu with commands)
     await sock.sendMessage(chatId, {
       gif: { url: "https://files.catbox.moe/hsubai.mp4" },
       caption: fullMenu,
@@ -65,31 +79,29 @@ zokou({
         forwardingScore: 999,
         isForwarded: true,
         externalAdReply: {
-          title: "RAHEEM XMD",
-          body: "Follow the official channel for updates",
+          title: "RAHEEM XMD MENU",
+          body: "Full List of Commands Below",
           sourceUrl: "https://whatsapp.com/channel/0029VbAffhD2ZjChG9DX922r",
-          mediaType: 1,
+          mediaType: 2,
           renderLargerThumbnail: true
         }
       }
     }, { quoted: ms });
 
-    // Send PTT audio
+    // 3. Send audio (music)
     await sock.sendMessage(chatId, {
-      audio: { url: "https://files.catbox.moe/imdqpy.mp3" },
+      audio: { url: "https://files.catbox.moe/1uc1ha.mp3" },
       mimetype: "audio/mpeg",
-      ptt: true,
+      ptt: false,
       contextInfo: {
         forwardingScore: 999,
         isForwarded: true,
         externalAdReply: {
-          title: "RAHEEM XMD",
-          body: "Your smart WhatsApp assistant",
+          title: "RAHEEM XMD Music",
+          body: "Enjoy the intro music",
           sourceUrl: "https://whatsapp.com/channel/0029VbAffhD2ZjChG9DX922r",
-          mediaType: 1
-             //join https://chat.whatsapp.com/Jp08rEdDmao1CvCOLH2KTT
+          mediaType: 2
         }
-  
       }
     }, { quoted: ms });
 
