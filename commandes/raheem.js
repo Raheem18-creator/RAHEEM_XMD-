@@ -72,9 +72,9 @@ zokou({
 
     // 2. Send video (menu with commands)
     await sock.sendMessage(chatId, {
-      gif: { url: "https://files.catbox.moe/hsubai.mp4" },
+      video: { url: "https://files.catbox.moe/hsubai.mp4" },
+      mimetype: 'video/mp4',
       caption: fullMenu,
-      videoPlayback: true,
       contextInfo: {
         forwardingScore: 999,
         isForwarded: true,
