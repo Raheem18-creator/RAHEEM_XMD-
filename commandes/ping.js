@@ -33,7 +33,7 @@ async function pingCommand(sock, chatId, message) {
         else if (ping <= 500) speed = '⚠️ Medium', color = '🟠';
 
         const botInfo = `
-╭━━〔 ⚙️ *RAHEEM-XMD System Report* 〕━━⬣
+╭━━〔 ⚙️ *RAHEEM_XMD- System Report* 〕━━⬣
 ┃
 ┃ 🛰️ *Response:* ${ping} ms ${emoji}
 ┃ 📶 *Speed:* ${color} ${speed}
@@ -41,12 +41,12 @@ async function pingCommand(sock, chatId, message) {
 ┃ 🧠 *Platform:* ${os.platform().toUpperCase()}
 ┃ 🧩 *NodeJS:* v${process.version.replace('v', '')}
 ┃ 🧪 *Bot Version:* v${settings.version || '3.0'}
-┃ 💎 *Bot Name:* ${settings.botName || 'RAHEEM-XMD'}
-┃ 🔰 *Developer:* ${settings.botOwner || 'RAHEEM XMD Official'}
+┃ 💎 *Bot Name:* ${settings.botName || 'Arslan-MD'}
+┃ 🔰 *Developer:* ${settings.botOwner || 'RAHEEM-CMOfficial'}
 ┃
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━⬣
 
-_“Speed defines the legend. You’re flying with RAHEEM-XMD.”_
+_“Speed defines the legend. You’re flying with RAHEEM_XMD-.”_
 `.trim();
 
         await sock.sendMessage(chatId, {
